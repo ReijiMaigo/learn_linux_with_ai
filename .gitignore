@@ -1,0 +1,30 @@
+# Kernel module build artifacts
+*.ko
+*.o
+*.mod
+*.mod.c
+*.mod.o
+*.cmd
+*.order
+*.symvers
+*.tmp_versions/
+.tmp_versions/
+modules.order
+Module.symvers
+
+# Compiled userspace binaries
+*.out
+*.elf
+
+# Device tree compiled blobs
+*.dtb
+*.dtbo
+
+# Editor/IDE
+*.swp
+*.swo
+*~
+.vscode/
+
+# Build directories
+build/
