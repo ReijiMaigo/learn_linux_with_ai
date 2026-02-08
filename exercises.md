@@ -14,6 +14,7 @@
 ## Project 01: Custom Character Device Driver with IOCTL
 
 **Folder:** `01_custom_char_device/`
+**Target Device:** Ubuntu PC
 
 **Description:**
 Build a Linux kernel module that registers a character device (`/dev/mydevice`). The device must support `open`, `read`, `write`, `release`, and custom `ioctl` commands. Implement a kernel-space circular buffer that userspace can write to and read from. Add at least 3 custom ioctl commands: one to get the current buffer size, one to clear the buffer, and one to set a maximum buffer capacity. Write a userspace test program in C that exercises all operations.
@@ -43,6 +44,7 @@ Build a Linux kernel module that registers a character device (`/dev/mydevice`).
 ## Project 02: Platform Driver with Device Tree Binding
 
 **Folder:** `02_platform_driver_with_devicetree/`
+**Target Device:** BeagleBone Black
 
 **Description:**
 Create a platform driver that binds to a custom device tree node. The driver should parse device tree properties (strings, integers, arrays, booleans) and expose them through `sysfs` attributes. Write a device tree overlay (`.dts`) that describes a virtual device with at least 5 custom properties. The driver must handle `probe` and `remove` callbacks correctly. Add a `sysfs` interface that allows userspace to read and modify at least two parameters at runtime.
@@ -71,6 +73,7 @@ Create a platform driver that binds to a custom device tree node. The driver sho
 ## Project 03: I2C Sensor Driver with Input Subsystem Integration
 
 **Folder:** `03_i2c_sensor_driver/`
+**Target Device:** Raspberry Pi (or Ubuntu PC with `i2c-stub` for emulation)
 
 **Description:**
 Write an I2C client driver for a real or emulated sensor (e.g., BMP280 temperature/pressure sensor, or a virtual I2C device using `i2c-stub`). The driver must initialize the sensor over I2C, read measurement registers periodically using a kernel workqueue or timer, and report values through both the `hwmon` (hardware monitoring) subsystem and a `sysfs` interface. If you don't have physical hardware, use the `i2c-stub` kernel module to emulate an I2C device with predefined register values.
@@ -99,6 +102,7 @@ Write an I2C client driver for a real or emulated sensor (e.g., BMP280 temperatu
 ## Project 04: Kernel Framebuffer Driver for a Virtual Display
 
 **Folder:** `04_kernel_framebuffer_driver/`
+**Target Device:** Ubuntu PC
 
 **Description:**
 Implement a framebuffer driver (`fbdev`) that creates a virtual display device. The driver allocates a memory-backed framebuffer that userspace can mmap and draw to. Implement a userspace program that maps the framebuffer, draws basic shapes (rectangles, lines, gradients), and writes the raw pixel data to a file (BMP or PPM image) for verification. The framebuffer should support at least 640x480 resolution with 32-bit color depth (RGBA). Implement `fb_fillrect`, `fb_copyarea`, and `fb_imageblit` operations.
@@ -127,6 +131,7 @@ Implement a framebuffer driver (`fbdev`) that creates a virtual display device. 
 ## Project 05: Build a Minimal Embedded Linux System from Scratch
 
 **Folder:** `05_embedded_linux_from_scratch/`
+**Target Device:** Ubuntu PC (build host) → QEMU (first pass) → BeagleBone Black (second pass on real hardware)
 
 **Description:**
 Build a minimal bootable embedded Linux system entirely from source. Cross-compile a Linux kernel (for ARM or your native x86_64), build BusyBox as the userspace, create a minimal root filesystem with an init script, and package it into an `initramfs`. Boot the system using QEMU. The init script must mount `proc`, `sys`, and `devtmpfs`, set up a basic networking interface (loopback at minimum), and drop into a shell. Then write a custom daemon in C that starts at boot, logs to a file, and responds to `SIGTERM` for clean shutdown. Include a `build.sh` script that automates the entire build process.
@@ -158,10 +163,10 @@ Build a minimal bootable embedded Linux system entirely from source. Cross-compi
 
 ## Progress Tracker
 
-| # | Project | Status |
-|---|---------|--------|
-| 1 | Custom Character Device Driver with IOCTL | Not Started |
-| 2 | Platform Driver with Device Tree Binding | Not Started |
-| 3 | I2C Sensor Driver with Input Subsystem | Not Started |
-| 4 | Kernel Framebuffer Driver for Virtual Display | Not Started |
-| 5 | Embedded Linux System from Scratch | Not Started |
+| # | Project | Target Device | Status |
+|---|---------|---------------|--------|
+| 1 | Custom Character Device Driver with IOCTL | Ubuntu PC | Not Started |
+| 2 | Platform Driver with Device Tree Binding | BeagleBone Black | Not Started |
+| 3 | I2C Sensor Driver with Input Subsystem | Raspberry Pi / Ubuntu PC (i2c-stub) | Not Started |
+| 4 | Kernel Framebuffer Driver for Virtual Display | Ubuntu PC | Not Started |
+| 5 | Embedded Linux System from Scratch | Ubuntu PC → QEMU → BeagleBone Black | Not Started |
